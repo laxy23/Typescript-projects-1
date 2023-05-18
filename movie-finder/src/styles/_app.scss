@@ -1,0 +1,41 @@
+#nav {
+  padding-top: 1rem;
+  .navbar-brand {
+    h1 {
+      font-size: 31px;
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+  .row {
+    width: 100%;
+    .item-2 {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+  }
+  .nav-link-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
+    .nav-link {
+      color: #000;
+      font-size: 20px;
+      font-weight: 500;
+      &:hover {
+        color: $primary-color;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+#home {
+  .first-slider {
+    img {
+      padding: 15px;
+    }
+  }
+}

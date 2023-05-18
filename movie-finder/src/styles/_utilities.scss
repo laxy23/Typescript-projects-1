@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+img {
+  width: 100%;
+}
+
+.mt-6 {
+  margin-top: 5rem;
+}
+.input-container {
+  position: relative;
+  .movie-input {
+    padding: 11px 72px 10px 19px;
+    outline: none;
+    border: 1.5px solid #6c6a6a;
+    border-radius: 30px;
+  }
+  span {
+    position: absolute;
+    right: 16px;
+    top: 0px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #6c6a6a;
+  }
+  &:focus {
+    border: 1.5px solid red;
+  }
+}
+.page-title {
+  h3 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+}
