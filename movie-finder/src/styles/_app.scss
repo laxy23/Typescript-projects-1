@@ -33,9 +33,62 @@
   }
 }
 #home {
-  .first-slider {
+  .item-1 {
     img {
       padding: 15px;
+      border-radius: 30px;
     }
+    .movie-item {
+      position: relative;
+      .text-box-container {
+        display: none;
+        position: absolute;
+        bottom: 30px;
+        left: -3px;
+        width: 100%;
+        color: #fff;
+        z-index: 123123;
+        height: 50px;
+        margin-bottom: 0.5rem;
+        .text-box {
+          display: flex;
+          justify-content: space-evenly;
+          h3 {
+            max-width: 300px;
+            font-size: 24px;
+          }
+        }
+        .rating {
+          position: absolute;
+          top: -205px;
+          right: 30px;
+          span {
+            color: $primary-color;
+          }
+        }
+      }
+      &:hover {
+        .text-box-container {
+          display: block;
+        }
+        &::after {
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          right: 15px;
+          bottom: 15px;
+          content: "";
+          background: #000;
+          z-index: 0;
+          opacity: 0.8;
+          transition: 0.3s;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+
+  .item-2 {
+    margin-top: 3.5rem;
   }
 }
