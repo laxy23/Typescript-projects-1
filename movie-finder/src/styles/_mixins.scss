@@ -1,0 +1,38 @@
+@mixin movieItem {
+  img {
+    border-radius: 8px !important;
+  }
+  position: relative;
+  .text-box-container {
+    margin-top: 1rem;
+    .text-box {
+      display: flex;
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+        span {
+          font-weight: 500;
+          color: #333;
+        }
+      }
+      .rating {
+        position: absolute;
+        display: flex;
+        padding: 9px 8px;
+        color: #fff;
+        border-radius: 6px;
+        justify-content: center;
+        align-items: center;
+        h4 {
+          display: flex;
+          border-radius: 5px;
+          font-size: 17px;
+          gap: 0.3rem;
+          padding: 7px 9px;
+          z-index: 2323;
+          background: $primary-color;
+        }
+      }
+    }
+  }
+}

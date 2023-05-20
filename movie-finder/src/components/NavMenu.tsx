@@ -5,7 +5,7 @@ function NavMenu() {
   return (
     <Navbar expand="lg" id="nav">
       <Container>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           <h1>
             Movie <span>Finder</span>
           </h1>
@@ -19,8 +19,8 @@ function NavMenu() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="#action1">Movies</Nav.Link>
-                <Nav.Link href="#action2">TV Show</Nav.Link>
+                <Nav.Link href="/movies">Movies</Nav.Link>
+                <Nav.Link href="/tv-shows">TV Show</Nav.Link>
               </Nav>
             </Col>
             <Col md={4} className="item-2">

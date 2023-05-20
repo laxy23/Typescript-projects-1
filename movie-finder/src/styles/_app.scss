@@ -93,44 +93,13 @@
       margin-top: -2rem;
     }
     .movie-item {
-      img {
-        border-radius: 8px;
-      }
+      @include movieItem;
+
       padding: 56px;
       height: 550px;
-      position: relative;
-      .text-box-container {
-        margin-top: 1rem;
-        .text-box {
-          display: flex;
-          h3 {
-            font-size: 20px;
-            font-weight: 700;
-            span {
-              font-weight: 500;
-              color: #333;
-            }
-          }
-          .rating {
-            position: absolute;
-            display: flex;
-            top: 54px;
-            right: 54px;
-            padding: 9px 8px;
-            color: #fff;
-            border-radius: 6px;
-            justify-content: center;
-            align-items: center;
-            h4 {
-              display: flex;
-              border-radius: 5px;
-              gap: 0.3rem;
-              padding: 7px 9px;
-              z-index: 2323;
-              background: $primary-color;
-            }
-          }
-        }
+      .rating {
+        top: 54px;
+        right: 54px;
       }
     }
   }
@@ -172,6 +141,19 @@
         border-radius: 7px;
         height: 195px;
       }
+    }
+  }
+}
+#movies {
+  .movie-item-2 {
+    @include movieItem;
+    img {
+      height: 325px;
+    }
+    padding: 19px;
+    .rating {
+      top: 16px;
+      right: 18px;
     }
   }
 }

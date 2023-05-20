@@ -13,10 +13,14 @@ export interface TrendingMovie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  first_air_date?: string | null;
+  name?: string;
 }
 
 export interface TrendingMoviesProps {
   trendingMovies?: TrendingMovie[] | null;
   recommendedMovies?: TrendingMovie[] | null;
   upcomingMovies?: TrendingMovie[] | null;
+  tvshows?: TrendingMovie[] | null;
+  movieList?: TrendingMovie | null;
 }

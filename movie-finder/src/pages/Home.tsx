@@ -1,5 +1,4 @@
 import { Container, Row } from "react-bootstrap";
-//import PageTitle from "../components/PageTitle";
 import { useContext } from "react";
 import TrendingMovies from "../components/TrendingMovies";
 import RecommendedMovies from "../components/RecommendedMovies";
