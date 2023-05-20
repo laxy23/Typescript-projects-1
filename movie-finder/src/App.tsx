@@ -3,15 +3,18 @@ import NavMenu from "./components/NavMenu";
 import Home from "./pages/Home";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { MovieProvider } from "./context/MovieContext";
 
 function App() {
   return (
     <>
       <Router>
-        <NavMenu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <MovieProvider>
+          <NavMenu />
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </MovieProvider>
       </Router>
     </>
   );

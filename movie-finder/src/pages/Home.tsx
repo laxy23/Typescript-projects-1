@@ -1,31 +1,22 @@
 import { Container, Row } from "react-bootstrap";
 //import PageTitle from "../components/PageTitle";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import TrendingMovies from "../components/TrendingMovies";
-import PopularMovies from "../components/PopularMovies";
-import { TrendingMovie } from "../components/utils/MovieTypes";
+import RecommendedMovies from "../components/RecommendedMovies";
+import UpcomingMovies from "../components/UpcomingMovies";
+import { MovieContext } from "../context/MovieContext";
 
 function Home() {
-  const [trendingMovies, setTrenindMovies] = useState<TrendingMovie[] | null>(
-    null
-  );
-  useEffect(() => {
-    const fetchTrendingMovies = async () => {
-      const res = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?api_key=329a0e3872ae492cffe5b6e67f30e4ab&language=en-US"
-      );
-      const data = await res.json();
-      setTrenindMovies(data.results);
-    };
+  const { trendingMovies, recommendedMovies, upcomingMovies } =
+    useContext(MovieContext);
 
-    fetchTrendingMovies();
-  }, []);
   return (
     <section id="home" className="mt-6">
       <Container>
         <Row>
           <TrendingMovies trendingMovies={trendingMovies} />
-          <PopularMovies />
+          <RecommendedMovies recommendedMovies={recommendedMovies} />
+          <UpcomingMovies upcomingMovies={upcomingMovies} />
         </Row>
       </Container>
     </section>

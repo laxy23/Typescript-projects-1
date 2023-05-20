@@ -16,5 +16,7 @@ export interface TrendingMovie {
 }
 
 export interface TrendingMoviesProps {
-  trendingMovies: TrendingMovie[] | null;
+  trendingMovies?: TrendingMovie[] | null;
+  recommendedMovies?: TrendingMovie[] | null;
+  upcomingMovies?: TrendingMovie[] | null;
 }

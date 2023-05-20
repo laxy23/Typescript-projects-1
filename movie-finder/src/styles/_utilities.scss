@@ -6,9 +6,16 @@ body {
 img {
   width: 100%;
 }
-
+a {
+  color: unset !important;
+  text-decoration: none !important;
+}
 .mt-6 {
   margin-top: 5rem;
+}
+.section-margin {
+  margin-bottom: 3.5rem !important;
+  margin-top: 3.5rem !important;
 }
 .input-container {
   position: relative;
@@ -40,7 +47,7 @@ img {
 }
 .movie-info-btn {
   font-size: 19px;
-  color: #ff2400;
+  color: #ff2400 !important;
   font-weight: 600;
   text-decoration: none;
   border-bottom: 1px;
@@ -48,6 +55,6 @@ img {
   box-sizing: border-box;
   height: 30px;
   &:hover {
-    color: $primary-color;
+    color: $primary-color !important;
   }
 }
