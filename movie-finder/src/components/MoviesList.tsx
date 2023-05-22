@@ -5,7 +5,7 @@ import { AiFillStar } from "react-icons/ai";
 
 function MoviesList({ movieList }: TrendingMoviesProps) {
   return (
-    <Col md={3} key={movieList?.id}>
+    <Col md={3} key={movieList?.id} id={`${movieList?.id}`}>
       <div className="movie-item-2">
         <Link to="/">
           <img
@@ -29,7 +29,9 @@ function MoviesList({ movieList }: TrendingMoviesProps) {
               </h3>
               <div className="rating">
                 <h4>
-                  {movieList?.vote_average}{" "}
+                  {movieList && movieList.vote_average
+                    ? Math.floor(movieList?.vote_average)
+                    : ""}
                   <span>
                     <AiFillStar />
                   </span>

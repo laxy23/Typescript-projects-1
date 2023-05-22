@@ -1,7 +1,27 @@
 import { Container, Col, Row, Nav, Navbar } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function NavMenu() {
+  const [search, setSearch] = useState<string | number>("");
+  const navigate = useNavigate();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const handleClick = () => {
+    if (search !== "") {
+      navigate(`/movie/${search}`);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleClick();
+    }
+  };
   return (
     <Navbar expand="lg" id="nav">
       <Container>
@@ -30,8 +50,11 @@ function NavMenu() {
                     type="text"
                     placeholder="Enter a title"
                     className="movie-input"
+                    value={search}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                   />
-                  <span>
+                  <span onClick={handleClick}>
                     <BiSearch />
                   </span>
                 </div>

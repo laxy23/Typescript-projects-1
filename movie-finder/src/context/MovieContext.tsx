@@ -7,6 +7,9 @@ interface MovieContextProps {
   recommendedMovies: TrendingMovie[] | null;
   nowPlayingMovies: TrendingMovie[] | null;
   tvshows: TrendingMovie[] | null;
+  movieSearch: TrendingMovie[] | null;
+  searchByName: (movieName: string | undefined) => void;
+  error: string;
 }
 
 export const MovieContext = createContext<MovieContextProps>({
@@ -15,6 +18,9 @@ export const MovieContext = createContext<MovieContextProps>({
   recommendedMovies: null,
   nowPlayingMovies: null,
   tvshows: null,
+  movieSearch: null,
+  searchByName: () => {},
+  error: "",
 });
 
 export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -33,6 +39,9 @@ export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
   const [recommendedMovies, setRecommendedMovies] = useState<
     TrendingMovie[] | null
   >(null);
+  const [movieSearch, setMovieSearch] = useState<TrendingMovie[] | null>(null);
+
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
@@ -90,6 +99,45 @@ export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
     fetchTvShows();
   }, []);
 
+  const searchByName = async (movieName: string | undefined) => {
+    try {
+      const apiBaseUrl = "https://api.themoviedb.org/3";
+      const apiKey = "329a0e3872ae492cffe5b6e67f30e4ab";
+
+      if (!movieName) {
+        // Handle the case where movieName is undefined
+        console.log("Movie doesn't exists");
+      }
+
+      const searchMovieUrl = `${apiBaseUrl}/search/movie?query=${movieName}&api_key=${apiKey}&language=en-US&page=1&include_adult=false`;
+      const searchTvShowUrl = `${apiBaseUrl}/search/tv?query=${movieName}&api_key=${apiKey}&language=en-US&page=1&include_adult=false`;
+
+      const [movieResponse, tvShowResponse] = await Promise.all([
+        fetch(searchMovieUrl),
+        fetch(searchTvShowUrl),
+      ]);
+
+      const [movieData, tvShowData] = await Promise.all([
+        movieResponse.json(),
+        tvShowResponse.json(),
+      ]);
+
+      const movieResults = movieData.results || [];
+      const tvShowResults = tvShowData.results || [];
+
+      const combinedResults = [...tvShowResults, ...movieResults];
+      if (combinedResults.length === 0) {
+        setMovieSearch(null);
+        setError("There is not a movie or tv show with this name!");
+        return;
+      }
+      setError("");
+      setMovieSearch(combinedResults);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <MovieContext.Provider
       value={{
@@ -98,6 +146,9 @@ export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
         recommendedMovies,
         nowPlayingMovies,
         tvshows,
+        movieSearch,
+        searchByName,
+        error,
       }}
     >
       {children}

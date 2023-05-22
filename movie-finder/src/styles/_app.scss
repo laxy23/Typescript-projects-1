@@ -1,5 +1,6 @@
 #nav {
   padding-top: 1rem;
+  z-index: 232;
   .navbar-brand {
     h1 {
       font-size: 31px;
@@ -154,6 +155,70 @@
     .rating {
       top: 16px;
       right: 18px;
+    }
+  }
+}
+#movie-info {
+  margin-bottom: 3rem;
+  margin-top: -5rem;
+  height: 700px;
+  background-position: center !important;
+  background-size: cover !important;
+  position: relative;
+  padding-top: 10rem;
+  color: #fff;
+  &::before {
+    content: "";
+    background: url("../images/page-cover-shadow.png") bottom repeat-x;
+    width: 100%;
+    height: 217px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+  }
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(35, 33, 34, 0.8);
+  }
+  .item {
+    z-index: 232;
+  }
+  .item-1 {
+    h3 {
+      font-size: 3.7rem;
+      font-weight: 700;
+    }
+    .year {
+      font-size: 22px;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+    .desc {
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .list {
+      display: flex;
+      align-items: center;
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10px;
+      }
+      p {
+        padding-left: 1rem;
+        margin-top: 1rem;
+      }
     }
   }
 }
