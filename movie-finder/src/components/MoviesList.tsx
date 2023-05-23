@@ -7,7 +7,13 @@ function MoviesList({ movieList }: TrendingMoviesProps) {
   return (
     <Col md={3} key={movieList?.id} id={`${movieList?.id}`}>
       <div className="movie-item-2">
-        <Link to="/">
+        <Link
+          to={
+            movieList?.first_air_date
+              ? `/tv/${movieList?.id}/details`
+              : `/movie/${movieList?.id}/details`
+          }
+        >
           <img
             src={
               movieList?.poster_path

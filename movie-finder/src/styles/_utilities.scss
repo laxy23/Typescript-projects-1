@@ -148,3 +148,34 @@ a {
     box-shadow: none;
   }
 }
+.modal-video {
+  position: absolute;
+  z-index: 23232;
+  top: 300px;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  .modal-video-body {
+    display: flex;
+    width: 90%;
+    .modal-video-inner {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      .modal-video-close-btn {
+        display: none;
+      }
+    }
+  }
+}
+.primary-btn {
+  border: 1px solid red;
+  padding: 10px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 2rem;
+  &:hover {
+    transition: 0.3s;
+    color: red !important;
+    border: 1px solid #fff;
+  }
+}

@@ -159,14 +159,16 @@
   }
 }
 #movie-info {
-  margin-bottom: 3rem;
+  overflow: hidden;
   margin-top: -5rem;
-  height: 700px;
+  height: 900px;
+  padding-bottom: 10px;
   background-position: center !important;
   background-size: cover !important;
   position: relative;
   padding-top: 10rem;
   color: #fff;
+  background: #232122;
   &::before {
     content: "";
     background: url("../images/page-cover-shadow.png") bottom repeat-x;
@@ -205,6 +207,9 @@
       margin-bottom: 1rem;
     }
     .list {
+      &:last-child {
+        margin-bottom: 1rem;
+      }
       display: flex;
       align-items: center;
       ul {

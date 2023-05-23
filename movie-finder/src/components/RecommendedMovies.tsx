@@ -13,7 +13,7 @@ function RecommendedMovies({ recommendedMovies }: TrendingMoviesProps) {
       <Slider {...settings2}>
         {recommendedMovies?.map((movie, i) => (
           <div key={i} className="movie-item">
-            <Link to="/">
+            <Link to={`/movie/${movie.id}/details`}>
               <img
                 src={
                   movie.poster_path

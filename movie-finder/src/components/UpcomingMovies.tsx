@@ -12,7 +12,7 @@ function UpcomingMovies({ upcomingMovies }: TrendingMoviesProps) {
       <Slider {...settings3}>
         {upcomingMovies?.map((movie, i) => (
           <div key={i} className="movie-item">
-            <Link to="/">
+            <Link to={`/movie/${movie.id}/details`}>
               <img
                 src={
                   movie.backdrop_path

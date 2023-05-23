@@ -24,3 +24,38 @@ export interface TrendingMoviesProps {
   tvshows?: TrendingMovie[] | null;
   movieList?: TrendingMovie | null;
 }
+
+export interface MovieDetail {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: boolean;
+  budget: number;
+  genres: {
+    id: number;
+    name: string;
+  }[];
+  homepage: string;
+  imdb_id: string;
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: {}[];
+  production_countries: {}[];
+  release_date: string;
+  revenue: string;
+  runtime: string;
+  spoken_languages: {}[];
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface MovieDetailList {
+  movieDetail: MovieDetail;
+}

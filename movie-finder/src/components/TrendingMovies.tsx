@@ -23,7 +23,10 @@ function TrendingMovies({ trendingMovies }: TrendingMoviesProps) {
             <div className="text-box-container">
               <div className="text-box">
                 <h3>{movie.title}</h3>
-                <Link to="/" className="movie-info-btn">
+                <Link
+                  to={`/movie/${movie.id}/details`}
+                  className="movie-info-btn"
+                >
                   Read More{" "}
                   <span>
                     <MdKeyboardDoubleArrowRight />

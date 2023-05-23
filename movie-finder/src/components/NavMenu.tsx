@@ -1,11 +1,26 @@
 import { Container, Col, Row, Nav, Navbar } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function NavMenu() {
   const [search, setSearch] = useState<string | number>("");
+  const [whiteNav, setWhiteNav] = useState<boolean>(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const pathMatchRoute = () => {
+      const pattern = /^\/movie\/\d+\/details$/; // Regular expression pattern
+
+      if (pattern.test(location.pathname)) {
+        setWhiteNav(true);
+      } else {
+        setWhiteNav(false);
+      }
+    };
+    pathMatchRoute();
+  }, [location]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -23,7 +38,13 @@ function NavMenu() {
     }
   };
   return (
-    <Navbar expand="lg" id="nav">
+    <Navbar
+      expand="lg"
+      id="nav"
+      style={{
+        color: `${whiteNav ? "white" : "black"}`,
+      }}
+    >
       <Container>
         <Navbar.Brand href="/">
           <h1>
