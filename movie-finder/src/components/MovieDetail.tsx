@@ -1,5 +1,5 @@
 import ModalVideo from "react-modal-video";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MovieDetailList } from "./utils/MovieTypes";
@@ -9,13 +9,48 @@ function MovieDetail({ movieDetail }: MovieDetailList) {
   const [videoId, setVideoId] = useState("");
   const checkIsOpen = () => {
     setOpen(true);
-    setVideoId("O-b2VfmmbyA");
   };
+
+  useEffect(() => {
+    if (movieDetail.first_air_date) {
+      const fetchTvVideo = async () => {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/tv/${movieDetail.id}/videos?api_key=329a0e3872ae492cffe5b6e67f30e4ab&language=en-US`
+        );
+        const data = await res.json();
+
+        setVideoId(data.results[0].key);
+      };
+
+      fetchTvVideo();
+    } else {
+      const fetchMovieVideo = async () => {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${movieDetail.id}/videos?api_key=329a0e3872ae492cffe5b6e67f30e4ab&language=en-US`
+        );
+        const data = await res.json();
+        setVideoId(data.results[0].key);
+      };
+
+      fetchMovieVideo();
+    }
+  }, []);
+
   return (
     <>
-      <Col md={6} className="item item-1">
-        <h3>{movieDetail?.original_title}</h3>
-        <h4 className="year">({movieDetail?.release_date.split("-")[0]})</h4>
+      <Col md={8} lg={6} className="item item-1">
+        <h3>
+          {movieDetail?.original_title
+            ? movieDetail.original_title
+            : movieDetail.original_name}
+        </h3>
+        <h4 className="year">
+          (
+          {movieDetail?.release_date
+            ? movieDetail.release_date.split("-")[0]
+            : movieDetail.first_air_date.split("-")[0]}
+          )
+        </h4>
         <p className="desc">{movieDetail?.overview}</p>
         <div className="lists">
           <div className="list">
@@ -47,7 +82,7 @@ function MovieDetail({ movieDetail }: MovieDetailList) {
           See More
         </Link>
       </Col>
-      <Col md={6} className="item item-2">
+      <Col md={4} lg={6} className="item item-2">
         <button
           aria-label="Play Button"
           className="play-btn"

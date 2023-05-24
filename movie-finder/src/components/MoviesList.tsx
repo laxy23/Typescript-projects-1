@@ -5,7 +5,14 @@ import { AiFillStar } from "react-icons/ai";
 
 function MoviesList({ movieList }: TrendingMoviesProps) {
   return (
-    <Col md={3} key={movieList?.id} id={`${movieList?.id}`}>
+    <Col
+      sm={6}
+      md={4}
+      lg={3}
+      xs={8}
+      key={movieList?.id}
+      id={`${movieList?.id}`}
+    >
       <div className="movie-item-2">
         <Link
           to={

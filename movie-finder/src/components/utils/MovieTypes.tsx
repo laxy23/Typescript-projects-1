@@ -29,6 +29,8 @@ export interface MovieDetail {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: boolean;
+  first_air_date: string;
+  original_name: string;
   budget: number;
   genres: {
     id: number;

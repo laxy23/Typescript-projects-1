@@ -10,8 +10,10 @@ interface MovieContextProps {
   tvshows: TrendingMovie[] | null;
   movieSearch: TrendingMovie[] | null;
   movieDetail: MovieDetail | null;
+  tvDetail: MovieDetail | null;
   searchByName: (movieName: string | undefined) => void;
   fetchMovieDetails: (id: undefined | string) => void;
+  fetchTvDetails: (id: undefined | string) => void;
   error: string;
 }
 
@@ -23,8 +25,10 @@ export const MovieContext = createContext<MovieContextProps>({
   tvshows: null,
   movieSearch: null,
   movieDetail: null,
+  tvDetail: null,
   searchByName: () => {},
   fetchMovieDetails: () => {},
+  fetchTvDetails: () => {},
   error: "",
 });
 
@@ -47,6 +51,7 @@ export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
   const [movieSearch, setMovieSearch] = useState<TrendingMovie[] | null>(null);
 
   const [movieDetail, setMovieDetail] = useState<MovieDetail | null>(null);
+  const [tvDetail, setTvDetail] = useState<MovieDetail | null>(null);
 
   const [error, setError] = useState<string>("");
 
@@ -154,6 +159,15 @@ export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
     setMovieDetail(data);
   };
 
+  const fetchTvDetails = async (id: undefined | string) => {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=329a0e3872ae492cffe5b6e67f30e4ab&language=en-US`
+    );
+    const data = await res.json();
+    console.log(data);
+    setTvDetail(data);
+  };
+
   return (
     <MovieContext.Provider
       value={{
@@ -167,6 +181,8 @@ export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
         error,
         fetchMovieDetails,
         movieDetail,
+        tvDetail,
+        fetchTvDetails,
       }}
     >
       {children}

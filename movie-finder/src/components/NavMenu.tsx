@@ -2,6 +2,7 @@ import { Container, Col, Row, Nav, Navbar } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { AiOutlineMenu } from "react-icons/ai";
 
 function NavMenu() {
   const [search, setSearch] = useState<string | number>("");
@@ -11,7 +12,7 @@ function NavMenu() {
 
   useEffect(() => {
     const pathMatchRoute = () => {
-      const pattern = /^\/movie\/\d+\/details$/; // Regular expression pattern
+      const pattern = /^\/(movie|tv)\/\d+\/details$/; // Regular expression pattern
 
       if (pattern.test(location.pathname)) {
         setWhiteNav(true);
@@ -43,6 +44,7 @@ function NavMenu() {
       id="nav"
       style={{
         color: `${whiteNav ? "white" : "black"}`,
+        background: `${whiteNav ? "black" : "white"}`,
       }}
     >
       <Container>
@@ -51,10 +53,18 @@ function NavMenu() {
             Movie <span>Finder</span>
           </h1>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Toggle
+          aria-controls="navbarScroll"
+          style={{
+            color: `${whiteNav ? "white" : "black"}`,
+            border: `${whiteNav ? "1px solid #fff" : "1px solid #000"}`,
+          }}
+        >
+          <AiOutlineMenu />
+        </Navbar.Toggle>
         <Navbar.Collapse id="navbarScroll">
           <Row>
-            <Col md={8}>
+            <Col lg={8} md={12}>
               <Nav
                 className="me-auto my-2 my-lg-0 nav-link-container"
                 style={{ maxHeight: "100px" }}
@@ -64,7 +74,7 @@ function NavMenu() {
                 <Nav.Link href="/tv-shows">TV Show</Nav.Link>
               </Nav>
             </Col>
-            <Col md={4} className="item-2">
+            <Col lg={4} md={12} className="item-2">
               <Nav>
                 <div className="input-container">
                   <input
