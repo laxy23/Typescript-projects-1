@@ -164,7 +164,6 @@ export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
       `https://api.themoviedb.org/3/tv/${id}?api_key=329a0e3872ae492cffe5b6e67f30e4ab&language=en-US`
     );
     const data = await res.json();
-    console.log(data);
     setTvDetail(data);
   };
 

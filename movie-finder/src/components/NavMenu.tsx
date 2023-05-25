@@ -1,7 +1,7 @@
 import { Container, Col, Row, Nav, Navbar } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 
 function NavMenu() {
@@ -70,8 +70,12 @@ function NavMenu() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/movies">Movies</Nav.Link>
-                <Nav.Link href="/tv-shows">TV Show</Nav.Link>
+                <Link className="nav-link" to="/movies">
+                  Movies
+                </Link>
+                <Link className="nav-link" to="/tv-shows">
+                  TV Show
+                </Link>
               </Nav>
             </Col>
             <Col lg={4} md={12} className="item-2">
