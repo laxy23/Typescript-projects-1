@@ -1,0 +1,10 @@
+@mixin button-style {
+  padding: 9px 10px;
+  border: 1px solid #000;
+  background: none;
+  font-size: 15px;
+  font-weight: 700;
+  &:hover {
+    transition: 0.3s;
+  }
+}
