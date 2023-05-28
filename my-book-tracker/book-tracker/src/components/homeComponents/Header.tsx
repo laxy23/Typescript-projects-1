@@ -4,7 +4,7 @@ import book from "../../images/cover-book.png";
 
 function Header() {
   return (
-    <section id="header">
+    <section id="header" className="line-bottom">
       <Container>
         <Row>
           <Col md={6} className="item-1">

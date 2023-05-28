@@ -1,5 +1,6 @@
 import { Container, Col, Row, Nav, Navbar } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 function NavMenu() {
   return (
@@ -17,10 +18,10 @@ function NavMenu() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="#action1">Home</Nav.Link>
-                <Nav.Link href="#action2">Explore</Nav.Link>
-                <Nav.Link href="/movies">Create Book</Nav.Link>
-                <Nav.Link href="/tv-shows">My Books</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/explore">Explore</Nav.Link>
+                <Nav.Link href="/create-book">Create Book</Nav.Link>
+                <Nav.Link href="/my-books">My Books</Nav.Link>
               </Nav>
             </Col>
             <Col md={5} className="item-2">
@@ -36,7 +37,9 @@ function NavMenu() {
                   </span>
                 </div>
                 <div className="button-container">
-                  <button className="primary-btn">Create Account</button>
+                  <Link to={"/profile"} className="primary-btn">
+                    Create Account
+                  </Link>
                 </div>
               </Nav>
             </Col>

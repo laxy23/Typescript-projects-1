@@ -5,11 +5,15 @@ body {
   color: #000 !important;
 }
 a {
-  text-decoration: none;
-  color: #fff;
+  text-decoration: none !important;
+  color: #000 !important;
   &:hover {
-    color: #fff;
+    color: #000 !important;
   }
+}
+.section-margin {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
 }
 .pb-6 {
   margin-bottom: 6rem;
@@ -26,7 +30,7 @@ a {
   @include button-style;
   &:hover {
     background-color: #000;
-    color: #fff;
+    color: #fff !important;
   }
 }
 .secondary-btn {

@@ -67,4 +67,71 @@
       }
     }
   }
+  #list {
+    .book-item {
+      padding: 20px;
+      img {
+        width: 238px;
+        height: 284px;
+      }
+      h3 {
+        font-size: 16px;
+        margin-top: 1rem;
+        max-width: 264px;
+        font-weight: 900;
+      }
+      h4 {
+        font-size: 15px;
+        color: $secondary-color;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+  #experience {
+    background-color: #cccccc;
+    padding-bottom: 3rem;
+    .item-1 {
+      margin-top: 3rem;
+    }
+    .item-2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+        margin-bottom: 2rem;
+      }
+      p {
+        color: $secondary-color;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+  #main-footer {
+    .icons {
+      ul {
+        display: flex;
+        gap: 2rem;
+        padding-left: 0rem;
+        margin-top: 2rem;
+        list-style: none;
+        li {
+          font-size: 25px;
+        }
+      }
+    }
+    .item {
+      ul {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        list-style: square;
+        padding-left: 1.5rem;
+      }
+    }
+  }
 }

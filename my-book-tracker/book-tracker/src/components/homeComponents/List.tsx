@@ -1,10 +1,15 @@
-import { Container, Col, Row } from "react-bootstrap";
-import { useEffect } from "react";
+import { Container, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Books } from "../types/BookTypes";
+import Slider from "react-slick";
+import { settings } from "../utils/CarouselSettings";
+import { Link } from "react-router-dom";
 
 // AIzaSyCjdeIADIDNVx7HR5rZVWENhABE1oMi0WM
 //Books API has not been used in project 406139447757 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/books.googleapis.com/overview?project=406139447757 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
 
 function List() {
+  const [books, setBooks] = useState<null | Books[]>(null);
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -14,6 +19,8 @@ function List() {
         const data = await res.json();
 
         console.log(data);
+
+        setBooks(data.items);
       } catch (error) {
         console.error("Error fetching books:", error);
       }
@@ -22,10 +29,28 @@ function List() {
     fetchBooks();
   }, []);
   return (
-    <section id="list">
+    <section id="list" className="section-margin">
       <Container>
         <Row>
-          <Col></Col>
+          <Slider {...settings}>
+            {books?.map((book, i) => (
+              <div className="book-item" key={i}>
+                <img
+                  src={book.volumeInfo.imageLinks.thumbnail}
+                  alt="book cover"
+                />
+                <h3>{book.volumeInfo.title}</h3>
+                <h4>By : {book.volumeInfo.authors[0]}</h4>
+                <Link
+                  to={book.volumeInfo.infoLink}
+                  target="_blank"
+                  className="primary-btn"
+                >
+                  View More
+                </Link>
+              </div>
+            ))}
+          </Slider>
         </Row>
       </Container>
     </section>
