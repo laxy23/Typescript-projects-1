@@ -35,6 +35,7 @@
             top: 15px;
             right: 20px;
             font-size: 22px;
+            cursor: pointer;
           }
         }
       }
@@ -67,26 +68,6 @@
       }
     }
   }
-  #list {
-    .book-item {
-      padding: 20px;
-      img {
-        width: 238px;
-        height: 284px;
-      }
-      h3 {
-        font-size: 16px;
-        margin-top: 1rem;
-        max-width: 264px;
-        font-weight: 900;
-      }
-      h4 {
-        font-size: 15px;
-        color: $secondary-color;
-        padding-bottom: 1rem;
-      }
-    }
-  }
   #experience {
     background-color: #cccccc;
     padding-bottom: 3rem;
@@ -111,6 +92,7 @@
     }
   }
   #main-footer {
+    padding-bottom: 15px;
     .icons {
       ul {
         display: flex;
@@ -131,6 +113,91 @@
         gap: 1rem;
         list-style: square;
         padding-left: 1.5rem;
+      }
+    }
+  }
+}
+#register {
+  .item-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 3rem;
+    h3 {
+      font-size: 3.5rem;
+      font-weight: 800;
+    }
+    .subtitle {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      color: #333;
+      font-size: 19px;
+      font-weight: 700;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        label {
+          font-size: 18px;
+          color: $secondary-color;
+        }
+        input {
+          padding: 11px 20px;
+          border: 1px solid #ccc;
+          outline: none;
+        }
+      }
+    }
+    .link {
+      font-size: 19px;
+      display: flex;
+      font-weight: 700;
+      gap: 1rem;
+      a {
+        color: #0d6efd !important;
+        text-decoration: underline !important;
+        font-size: 18px;
+      }
+    }
+  }
+  .item-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100%;
+    }
+  }
+}
+#explore {
+  .item-container {
+    position: relative;
+    .option {
+      position: absolute;
+      top: 0;
+      right: 0px;
+      h3 {
+        font-size: 22px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      #type {
+        padding: 3px 27px;
+        border: 1px solid #ccc;
+        outline: none;
+      }
+      #dropdown-basic {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: #000;
+        border: 1px solid #ccc;
       }
     }
   }

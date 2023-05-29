@@ -33,6 +33,17 @@ a {
     color: #fff !important;
   }
 }
+.form-btn {
+  @include button-style;
+  padding: 10px 33px;
+  background: #000;
+  color: #fff;
+  &:hover {
+    background-color: $background-color;
+    color: #000;
+    transition: 0.3s;
+  }
+}
 .secondary-btn {
   background-color: #000 !important;
   color: #ffff;
@@ -50,4 +61,40 @@ a {
     color: #000;
   }
   @include button-style;
+}
+.pageTitle {
+  margin-top: 2rem;
+  h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+}
+.book-item {
+  padding: 20px;
+  img {
+    width: 238px;
+    height: 284px;
+  }
+  h3 {
+    font-size: 16px;
+    margin-top: 1rem;
+    max-width: 264px;
+    font-weight: 900;
+  }
+  h4 {
+    font-size: 15px;
+    color: $secondary-color;
+    display: flex;
+    margin-bottom: 1.3rem;
+    ul {
+      list-style: none;
+      display: flex;
+      padding-left: 0.5rem;
+      gap: 1rem;
+      li {
+        max-width: min-content;
+      }
+    }
+  }
 }
