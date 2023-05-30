@@ -51,3 +51,15 @@ export interface Books {
 export interface BookList {
   books?: Books[] | null;
 }
+
+export enum BookType {
+  Fiction = "Fiction",
+  ScienceFictionFantasy = "Science Fiction/Fantasy",
+  SelfHelpPersonalDevelopment = "Self-help/Personal Development",
+  BusinessEconomics = "Business/Economics",
+  Psychology = "Psychology",
+  Travel = "Travel",
+  ReligionSpirituality = "Religion/Spirituality",
+  HealthFitness = "Health/Fitness",
+  ChildrensBooks = "Children's Books",
+}

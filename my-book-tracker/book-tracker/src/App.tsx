@@ -9,6 +9,8 @@ import Explore from "./pages/Explore";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Search from "./pages/Search";
+import CreateBook from "./pages/CreateBook";
+import MyBooks from "./pages/MyBooks";
 
 function App() {
   return (
@@ -18,8 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/my-books" element={<Home />} />
-          <Route path="/create-book" element={<Home />} />
+          <Route path="/my-books" element={<MyBooks />} />
+          <Route path="/create-book" element={<CreateBook />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/search/:value" element={<Search />} />

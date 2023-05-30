@@ -1,9 +1,9 @@
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import PageTitle from "../components/utils/PageTitle";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Books } from "../components/types/BookTypes";
-import blankCover from "../images/blank-cover.png";
+import BookList from "../components/BookList";
 
 function Search() {
   const [data, setData] = useState<Books[] | null>(null);
@@ -30,30 +30,7 @@ function Search() {
         <PageTitle title="Results" />
         <Row>
           {data?.map((book, i) => (
-            <Col md={3} key={i} className="book-item">
-              <img
-                src={
-                  book?.volumeInfo?.imageLinks?.thumbnail
-                    ? book?.volumeInfo?.imageLinks?.thumbnail
-                    : blankCover
-                }
-                alt="Book thumbnail"
-              />
-              <h3>{book.volumeInfo?.title}</h3>
-              <h4>
-                By :{" "}
-                {book.volumeInfo.authors
-                  ? book.volumeInfo?.authors[0]
-                  : "Undefined"}
-              </h4>
-              <Link
-                to={book.volumeInfo?.infoLink}
-                target="_blank"
-                className="primary-btn"
-              >
-                View More
-              </Link>
-            </Col>
+            <BookList book={book} key={i} />
           ))}
         </Row>
       </Container>

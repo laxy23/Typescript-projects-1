@@ -8,7 +8,9 @@ function NavMenu() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (value !== "") {
+    if (value === "" || value.trim() === "") {
+      return;
+    } else {
       navigate(`/search/${value}`);
     }
   };
