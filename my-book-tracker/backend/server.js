@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const cors = require('cors')
 const { connect } = require('./utils/connect.js')
 const authRoutes = require('./routes/auth.js')
 const PORT = process.env.PORT_APP || 5000
@@ -7,6 +8,13 @@ dotenv.config()
 const app = express()
 
 app.use(express.json());
+const corsOptions = {
+    origin: "http://localhost:5173",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use('/api/v1/auth', authRoutes)
 

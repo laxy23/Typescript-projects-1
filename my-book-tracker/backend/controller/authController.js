@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken')
 exports.register = async (req, res, next) => {
     try {
         const salt = bcrypt.genSaltSync(10);
-        console.log(req.body.password)
         const hash = bcrypt.hashSync(req.body.password, salt);
         const newUser = {
             name: req.body.name,
@@ -23,7 +22,6 @@ exports.register = async (req, res, next) => {
 
         const user = await User.create(newUser);
 
-        console.log(user)
         res.status(201).json({
             ...user._doc,
         });
