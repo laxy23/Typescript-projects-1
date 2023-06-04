@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const cors = require('cors')
 const { connect } = require('./utils/connect.js')
 const authRoutes = require('./routes/auth.js')
+const bookRoutes = require('./routes/book.js')
 const PORT = process.env.PORT_APP || 5000
 dotenv.config()
 const app = express()
@@ -17,6 +18,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/book', bookRoutes)
 
 connect()
 

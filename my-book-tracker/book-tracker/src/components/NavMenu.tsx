@@ -1,11 +1,24 @@
 import { Container, Col, Row, Nav, Navbar } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { reset } from "../state/authSlice";
+import { useDispatch } from "react-redux";
 
 function NavMenu() {
   const [value, setValue] = useState("");
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const user = localStorage.getItem("librifyUser");
+  useEffect(() => {
+    if (user) {
+      const name = JSON.parse(user);
+      const username = name.name;
+      setUserName(username);
+    }
+  }, [user]);
 
   const handleClick = () => {
     if (value === "" || value.trim() === "") {
@@ -19,6 +32,12 @@ function NavMenu() {
     if (event.key === "Enter") {
       handleClick();
     }
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem("librifyUser");
+    dispatch(reset());
+    window.location.reload();
   };
   return (
     <Navbar expand="lg" id="nav" className="line-bottom">
@@ -57,9 +76,17 @@ function NavMenu() {
                   </span>
                 </div>
                 <div className="button-container">
-                  <Link to={"/sign-up"} className="primary-btn">
-                    Create Account
-                  </Link>
+                  {userName === "" ? (
+                    <Link to={"/sign-up"} className="primary-btn">
+                      Create Account
+                    </Link>
+                  ) : (
+                    <>
+                      <button className="secondary-btn" onClick={handleLogOut}>
+                        Logout
+                      </button>
+                    </>
+                  )}
                 </div>
               </Nav>
             </Col>

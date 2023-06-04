@@ -28,6 +28,7 @@ function SignIn() {
 
     if (isSuccess || user) {
       console.log("You are logged in");
+      navigate("/");
     }
 
     dispatch(reset());
