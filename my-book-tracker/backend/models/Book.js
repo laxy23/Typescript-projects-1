@@ -19,7 +19,8 @@ const bookSchema = new Schema({
         require: [true, 'Book must have a pages']
     },
     type: {
-        type: Boolean,
+        type: String,
+        enum: ["fiction", "non-fiction"],
         require: [true, 'Book must have a type']
     },
     description: {

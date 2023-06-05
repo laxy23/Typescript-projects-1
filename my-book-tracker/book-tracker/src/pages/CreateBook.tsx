@@ -1,35 +1,79 @@
 import { Container, Row, Col } from "react-bootstrap";
 import PageTitle from "../components/utils/PageTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { createBook, reset } from "../state/bookSlice";
 
 function CreateBook() {
   const [form, setForm] = useState({
-    author: "",
-    title: "",
-    isbn: "",
-    pages: 0,
+    author: "Jasmin2",
+    title: "My second Book",
+    isbn: 2456789,
+    pages: 111,
     type: "fiction",
-    description: "",
-    images: null,
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    image: "" as any,
   });
+  const dispatch = useDispatch();
+
+  const { author, title, isbn, pages, type, description, image } = form;
+
+  const { isError, isLoading, isSuccess } = useSelector(
+    (state: any) => state.book
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log("Something went wrong!");
+    }
+
+    dispatch(reset());
+  }, [isError, isSuccess]);
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
     >
   ) => {
-    console.log(e.target.value);
-    console.log(e);
-
     setForm((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = () => {
-    console.log(123);
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]; // Get the uploaded file
+
+    if (file) {
+      console.log("Uploaded file:", file);
+
+      setForm((prevForm) => ({
+        ...prevForm,
+        image: file,
+      }));
+    }
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(form);
+
+    const formData = new FormData();
+    formData.append("description", description);
+    formData.append("title", title);
+    formData.append("author", author);
+    formData.append("isbn", isbn.toString());
+    formData.append("pages", pages.toString());
+    formData.append("type", type);
+    formData.append("image", image);
+
+    dispatch<any>(createBook(form));
+  };
+
+  if (isLoading) {
+    <h3>Loading...</h3>;
+  }
 
   return (
     <section id="create-book">
@@ -84,7 +128,7 @@ function CreateBook() {
               <div className="input-container">
                 <label htmlFor="image">Upload Image</label>
                 <input
-                  onChange={handleChange}
+                  onChange={handleImageChange}
                   type="file"
                   accept=".jpg,.png,.jpeg"
                   id="images"

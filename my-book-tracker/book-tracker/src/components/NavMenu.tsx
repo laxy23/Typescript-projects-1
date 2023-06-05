@@ -42,9 +42,9 @@ function NavMenu() {
   return (
     <Navbar expand="lg" id="nav" className="line-bottom">
       <Container>
-        <Navbar.Brand href="/">
+        <Link className="navbar-brand" to="/">
           <h1>Librify</h1>
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Row className="items">
@@ -54,10 +54,18 @@ function NavMenu() {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/explore">Explore</Nav.Link>
-                <Nav.Link href="/create-book">Create Book</Nav.Link>
-                <Nav.Link href="/my-books">My Books</Nav.Link>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+                <Link className="nav-link" to="/explore">
+                  Explore
+                </Link>
+                <Link className="nav-link" to="/create-book">
+                  Create Book
+                </Link>
+                <Link className="nav-link" to="/my-books">
+                  My Books
+                </Link>
               </Nav>
             </Col>
             <Col md={5} className="item-2">

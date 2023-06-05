@@ -11,3 +11,13 @@ export interface userData {
   email: string;
   password: string;
 }
+
+export interface bookData {
+  author: string;
+  title: string;
+  isbn: number;
+  pages: number;
+  type: string;
+  description: string;
+  image: any;
+}
