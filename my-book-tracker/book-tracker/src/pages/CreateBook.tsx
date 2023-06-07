@@ -3,6 +3,7 @@ import PageTitle from "../components/utils/PageTitle";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createBook, reset } from "../state/bookSlice";
+import { useNavigate } from "react-router-dom";
 
 function CreateBook() {
   const [form, setForm] = useState({
@@ -16,6 +17,7 @@ function CreateBook() {
     image: "" as any,
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { author, title, isbn, pages, type, description, image } = form;
 
@@ -26,6 +28,10 @@ function CreateBook() {
   useEffect(() => {
     if (isError) {
       console.log("Something went wrong!");
+    }
+
+    if (isSuccess) {
+      navigate("/my-books");
     }
 
     dispatch(reset());
@@ -70,10 +76,6 @@ function CreateBook() {
 
     dispatch<any>(createBook(form));
   };
-
-  if (isLoading) {
-    <h3>Loading...</h3>;
-  }
 
   return (
     <section id="create-book">

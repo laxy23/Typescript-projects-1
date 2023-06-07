@@ -1,7 +1,7 @@
 const Book = require('../models/Book')
 const multer = require("multer");
 const sharp = require('sharp');
-
+const { createError } = require('../utils/error')
 const multerStorage = multer.memoryStorage();
 
 const upload = multer({
@@ -56,6 +56,41 @@ exports.createBook = async (req, res, next) => {
                 book
             })
         }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.getMyBooks = async (req, res, next) => {
+    try {
+        const books = await Book.find({
+            user: req.user.id
+        })
+
+        res.status(200).json({
+            success: 'true',
+            results: books.length,
+            books
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.getBookDetail = async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const book = await Book.findById(id)
+        const userId = book.user.toString()
+        if (userId === req.user.id) {
+            res.status(200).json({
+                success: 'true',
+                book
+            })
+        } else {
+            return next(createError(404, "You are not authenticated!"));
+        }
+
     } catch (error) {
         console.log(error)
     }

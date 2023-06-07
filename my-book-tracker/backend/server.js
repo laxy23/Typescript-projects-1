@@ -20,6 +20,7 @@ app.use(cookieparser());
 
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/book', bookRoutes)
+app.use("/static", express.static("public/images"));
 
 connect()
 

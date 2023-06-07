@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 function NavMenu() {
   const [value, setValue] = useState("");
   const [userName, setUserName] = useState("");
+  const [id, setId] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -16,6 +17,7 @@ function NavMenu() {
     if (user) {
       const name = JSON.parse(user);
       const username = name.name;
+      setId(name._id);
       setUserName(username);
     }
   }, [user]);
@@ -39,6 +41,7 @@ function NavMenu() {
     dispatch(reset());
     window.location.reload();
   };
+
   return (
     <Navbar expand="lg" id="nav" className="line-bottom">
       <Container>
@@ -63,7 +66,7 @@ function NavMenu() {
                 <Link className="nav-link" to="/create-book">
                   Create Book
                 </Link>
-                <Link className="nav-link" to="/my-books">
+                <Link className="nav-link" to={`/my-books/${id}`}>
                   My Books
                 </Link>
               </Nav>

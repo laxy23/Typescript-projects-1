@@ -22,7 +22,7 @@ function Expereince() {
       <Container>
         <Row>
           <Col md={6} className="item-1">
-            <img src={experience} alt="" />
+            <img src={experience} alt="Experience" />
           </Col>
           <Col md={6} className="item-2">
             <h2>We Provide You The Experience</h2>
