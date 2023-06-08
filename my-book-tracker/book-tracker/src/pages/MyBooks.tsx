@@ -14,17 +14,12 @@ function MyBooks() {
   const params = useParams();
   const id: string = params.id!;
 
-  console.log(id);
-
-  console.log(id);
   const myBooks: bookData[] | null = useSelector(
     (state: ReturnType<typeof store.getState>) => state.book.myBooks
   );
   const { isError } = useSelector(
     (state: ReturnType<typeof store.getState>) => state.book
   );
-
-  console.log(myBooks);
 
   useEffect(() => {
     dispatch<any>(getMyBooks(id));
@@ -33,7 +28,7 @@ function MyBooks() {
     }
 
     dispatch(reset());
-  }, [dispatch, isError, id]);
+  }, [dispatch]);
 
   return (
     <section id="my-books">
@@ -41,7 +36,7 @@ function MyBooks() {
         <PageTitle title="My Books" />
         <Row>
           {myBooks?.map((book, i) => (
-            <Col key={i} md={3} className="book-item">
+            <Col key={i} md={6} sm={6} lg={4} xl={3} className="book-item">
               <img src={`${API_URL}/${book.image}`} alt="book cover" />
               <h3>{book.title}</h3>
               <h4>By : {book.author}</h4>
@@ -50,6 +45,14 @@ function MyBooks() {
               </Link>
             </Col>
           ))}
+          {myBooks?.length === 0 && (
+            <h3>
+              You don't have any books created,{" "}
+              <Link className="my-link" to="/create-book">
+                please create a book!
+              </Link>{" "}
+            </h3>
+          )}
         </Row>
       </Container>
     </section>

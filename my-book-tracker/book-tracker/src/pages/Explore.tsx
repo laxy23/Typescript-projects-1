@@ -25,7 +25,6 @@ function Explore() {
   }, [type]);
 
   const onChange = (e: string | null) => {
-    console.log(e?.substring(2));
     const bookType = e?.substring(2);
     setType(bookType);
   };

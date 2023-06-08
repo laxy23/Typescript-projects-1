@@ -3,21 +3,18 @@ import PageTitle from "../components/utils/PageTitle";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createBook, reset } from "../state/bookSlice";
-import { useNavigate } from "react-router-dom";
 
 function CreateBook() {
   const [form, setForm] = useState({
-    author: "Jasmin2",
-    title: "My second Book",
-    isbn: 2456789,
-    pages: 111,
+    author: "",
+    title: "",
+    isbn: 0,
+    pages: 0,
     type: "fiction",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    description: "",
     image: "" as any,
   });
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { author, title, isbn, pages, type, description, image } = form;
 
@@ -28,10 +25,6 @@ function CreateBook() {
   useEffect(() => {
     if (isError) {
       console.log("Something went wrong!");
-    }
-
-    if (isSuccess) {
-      navigate("/my-books");
     }
 
     dispatch(reset());
@@ -52,8 +45,6 @@ function CreateBook() {
     const file = e.target.files?.[0]; // Get the uploaded file
 
     if (file) {
-      console.log("Uploaded file:", file);
-
       setForm((prevForm) => ({
         ...prevForm,
         image: file,
@@ -63,7 +54,6 @@ function CreateBook() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
 
     const formData = new FormData();
     formData.append("description", description);
@@ -76,6 +66,10 @@ function CreateBook() {
 
     dispatch<any>(createBook(form));
   };
+
+  if (isLoading) {
+    return <h3>Loading...</h3>;
+  }
 
   return (
     <section id="create-book">

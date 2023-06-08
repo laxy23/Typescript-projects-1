@@ -22,7 +22,7 @@ function Header() {
               </span>
             </button>
           </Col>
-          <Col md={6}>
+          <Col md={6} className="item-2">
             <img src={book} alt="book cover" />
           </Col>
         </Row>

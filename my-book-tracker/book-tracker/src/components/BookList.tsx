@@ -8,7 +8,7 @@ interface BookItem {
 }
 function BookList({ book }: BookItem) {
   return (
-    <Col md={3} className="book-item">
+    <Col md={6} lg={4} sm={6} xl={3} className="book-item">
       <img
         src={
           book?.volumeInfo?.imageLinks?.thumbnail

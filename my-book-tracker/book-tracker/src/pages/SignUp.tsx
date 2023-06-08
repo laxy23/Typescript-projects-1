@@ -60,7 +60,7 @@ function SignUp() {
     <section id="register" className="section-margin">
       <Container>
         <Row>
-          <Col md={6} className="item-1">
+          <Col md={12} lg={6} className="item-1">
             <h3>Get Started!</h3>
             <p className="subtitle">Create your account now!</p>
             <form onSubmit={handleSubmit}>
@@ -103,7 +103,7 @@ function SignUp() {
               Have an account? <Link to="/sign-in">Sign In</Link>
             </p>
           </Col>
-          <Col md={6} className="item-2">
+          <Col md={12} lg={6} className="item-2">
             <img src={bookshelf} alt="Shelf" />
           </Col>
         </Row>

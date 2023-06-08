@@ -21,8 +21,6 @@ const getMyBooks = async (id: String) => {
     withCredentials: true,
   });
 
-  console.log(res);
-
   return res.data.books;
 };
 
@@ -30,8 +28,6 @@ const getBookDetail = async (id: String) => {
   const res = await axios.get(`${API_URL}/bookDetail/${id}`, {
     withCredentials: true,
   });
-
-  console.log(res.data);
 
   return res.data.book;
 };

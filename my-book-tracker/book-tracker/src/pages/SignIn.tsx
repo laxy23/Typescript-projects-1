@@ -61,7 +61,7 @@ function SignIn() {
     <section id="register" className="section-margin">
       <Container>
         <Row>
-          <Col md={6} className="item-1">
+          <Col md={12} lg={6} className="item-1">
             <h3>Welcome Back!</h3>
             <p className="subtitle">Log into your account!</p>
             <form onSubmit={handleSubmit}>
@@ -94,7 +94,7 @@ function SignIn() {
               Don't have an account? <Link to="/sign-up">Sign Up</Link>
             </p>
           </Col>
-          <Col md={6} className="item-2">
+          <Col md={12} lg={6} className="item-2">
             <img src={booking} alt="Shelf" />
           </Col>
         </Row>

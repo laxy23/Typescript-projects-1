@@ -51,15 +51,12 @@ function NavMenu() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Row className="items">
-            <Col md={7} className="item-1">
+            <Col md={5} xxl={7} className="item-1">
               <Nav
                 className="link-items my-2 my-lg-0 nav-link-container"
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Link className="nav-link" to="/">
-                  Home
-                </Link>
                 <Link className="nav-link" to="/explore">
                   Explore
                 </Link>
@@ -71,7 +68,7 @@ function NavMenu() {
                 </Link>
               </Nav>
             </Col>
-            <Col md={5} className="item-2">
+            <Col md={7} xxl={5} className="item-2">
               <Nav>
                 <div className="input-container">
                   <input

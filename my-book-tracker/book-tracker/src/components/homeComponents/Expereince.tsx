@@ -11,12 +11,6 @@ function Expereince() {
     return <h3>Loading...</h3>;
   }
 
-  if (loggedIn) {
-    console.log(123);
-  } else {
-    console.log(456);
-  }
-
   return (
     <section id="experience" className="section-margin">
       <Container>

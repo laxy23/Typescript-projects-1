@@ -21,7 +21,7 @@ exports.resizePhoto = (req, res, next) => {
     req.file.filename = imgName + "-" + `${uniqueSuffix}.jpeg`;
 
     sharp(req.file.buffer)
-        .resize(500, 500, { withoutEnlargement: true })
+        .resize(800, 1000, { withoutEnlargement: true })
         .toFormat("jpeg")
         .jpeg({ quality: 90 })
         .toFile(`public/images/${req.file.filename}`);

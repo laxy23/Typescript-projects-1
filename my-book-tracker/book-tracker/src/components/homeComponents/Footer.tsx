@@ -27,7 +27,7 @@ function Footer() {
     <footer id="main-footer">
       <Container>
         <Row>
-          <Col md={3}>
+          <Col md={6} lg={3} sm={6}>
             <h3>Librify</h3>
             <div className="icons">
               <ul>
@@ -44,7 +44,7 @@ function Footer() {
             </div>
           </Col>
           {data.map((item) => (
-            <Col md={3} key={item.id} className="item">
+            <Col md={6} sm={6} lg={3} key={item.id} className="item">
               <h3>{item.title}</h3>
               <ul>
                 {item.list.map((list, i) => (

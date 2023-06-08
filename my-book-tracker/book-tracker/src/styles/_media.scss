@@ -1,0 +1,163 @@
+@media (max-width: 1200px) {
+  #nav {
+    .items {
+      .item-1 {
+        .link-items {
+          gap: 0.5rem;
+        }
+      }
+      .item-2 {
+        display: flex;
+        justify-content: center;
+        .navbar-nav {
+          gap: 0.5rem;
+        }
+      }
+    }
+  }
+  #home {
+    #header {
+      .item-1 {
+        h1 {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+  #nav {
+    .items {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      .item-1 {
+        .link-items {
+          max-height: unset !important;
+        }
+      }
+    }
+  }
+  #home {
+    #header {
+      .item-1 {
+        h1 {
+          font-size: 3.5rem;
+        }
+      }
+      .item-2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    #experience {
+      .item-2 {
+        h2 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  #register {
+    .item-2 {
+      display: none;
+    }
+  }
+  #footer {
+    .item {
+      margin-bottom: 1rem;
+    }
+  }
+}
+@media (max-width: 768px) {
+  #home {
+    #header {
+      .item-2 {
+        display: none;
+      }
+    }
+    #experience {
+      .item-1 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        img {
+          width: 50%;
+        }
+      }
+    }
+  }
+  .book-item {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #book-detail {
+    .item-1 {
+      justify-content: inherit;
+      margin-bottom: 2rem;
+    }
+  }
+  #create-book {
+    .item-1 {
+      form {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+  #register {
+    .item-1 {
+      padding-left: 0rem;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .book-item {
+    img {
+      width: 208px;
+    }
+  }
+  #register {
+    .item-1 {
+      h3 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  #home {
+    #experience {
+      margin: 3.5rem 0rem !important;
+      .item-1 {
+        img {
+          width: 90%;
+        }
+      }
+    }
+  }
+  .line-bottom {
+    margin: 0 1rem;
+  }
+  section {
+    margin: 0 2rem;
+  }
+}
+@media (max-width: 425px) {
+  #home {
+    #header {
+      .item-1 {
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+  #create-book {
+    margin: 0 0;
+  }
+}

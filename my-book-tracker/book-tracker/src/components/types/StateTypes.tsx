@@ -20,7 +20,7 @@ export interface BookState {
 }
 
 export interface bookData {
-  _id: string;
+  _id?: string;
   author: string;
   title: string;
   isbn: number;

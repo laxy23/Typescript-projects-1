@@ -5,9 +5,6 @@ import Slider from "react-slick";
 import { settings } from "../utils/CarouselSettings";
 import { Link } from "react-router-dom";
 
-// AIzaSyCjdeIADIDNVx7HR5rZVWENhABE1oMi0WM
-//Books API has not been used in project 406139447757 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/books.googleapis.com/overview?project=406139447757 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
-
 function List() {
   const [books, setBooks] = useState<null | Books[]>(null);
   useEffect(() => {
@@ -17,8 +14,6 @@ function List() {
           "https://www.googleapis.com/books/v1/volumes?q=subject:philosophy&orderBy=relevance&maxResults=20&key=AIzaSyCjdeIADIDNVx7HR5rZVWENhABE1oMi0WM"
         );
         const data = await res.json();
-
-        console.log(data);
 
         setBooks(data.items);
       } catch (error) {
