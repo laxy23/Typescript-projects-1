@@ -4,12 +4,13 @@ const cors = require('cors')
 const cookieparser = require("cookie-parser");
 const { connect } = require('./utils/connect.js')
 const authRoutes = require('./routes/auth.js')
+const path = require('path')
 const bookRoutes = require('./routes/book.js')
 const PORT = process.env.PORT_APP || 5000
 dotenv.config()
 const app = express()
 const corsOptions = {
-    origin: "https://book-tracker-app.onrender.com",
+    origin: "book-tracker-app.onrender.com",
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 };
