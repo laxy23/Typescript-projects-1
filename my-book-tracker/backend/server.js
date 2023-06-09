@@ -9,7 +9,7 @@ const PORT = process.env.PORT_APP || 5000
 dotenv.config()
 const app = express()
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://book-tracker-app.onrender.com",
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 };
