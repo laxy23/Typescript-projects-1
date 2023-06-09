@@ -1,15 +1,16 @@
 const express = require('express')
 const dotenv = require('dotenv')
+dotenv.config()
 const cors = require('cors')
+const path = require('path')
 const cookieparser = require("cookie-parser");
 const { connect } = require('./utils/connect.js')
 const authRoutes = require('./routes/auth.js')
 const bookRoutes = require('./routes/book.js')
-const PORT = process.env.PORT_APP || 5000
-dotenv.config()
+const PORT = process.env.PORT_APP || 5000;
 const app = express()
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://book-tracker-app.onrender.com",
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 };
@@ -21,6 +22,13 @@ app.use(cookieparser());
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/book', bookRoutes)
 app.use("/static", express.static("public/images"));
+const frontendPath = path.resolve(__dirname, '../book-tracker/dist');
+
+app.use(express.static(frontendPath, { maxAge: '1d' }));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+});
 
 connect()
 
