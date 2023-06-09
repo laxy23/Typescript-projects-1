@@ -22,6 +22,14 @@ app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/book', bookRoutes)
 app.use("/static", express.static("public/images"));
 
+const frontendPath = path.resolve(__dirname, '../book-tracker/dist');
+
+app.use(express.static(frontendPath, { maxAge: '1d' }));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
 connect()
 
 app.use((err, req, res, next) => {
