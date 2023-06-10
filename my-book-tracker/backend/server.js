@@ -15,8 +15,6 @@ const corsOptions = {
     optionSuccessStatus: 200,
 };
 
-connect()
-
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieparser());
@@ -43,6 +41,8 @@ app.use((err, req, res, next) => {
     })
 })
 
-app.listen(PORT, () => {
-    console.log(`App is running on port ${PORT}`)
+connect().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
 })
