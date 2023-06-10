@@ -6,7 +6,6 @@ const path = require('path')
 const cookieparser = require("cookie-parser");
 const { connect } = require('./utils/connect.js')
 const authRoutes = require('./routes/auth.js')
-const path = require('path')
 const bookRoutes = require('./routes/book.js')
 const PORT = process.env.PORT_APP || 5000;
 const app = express()

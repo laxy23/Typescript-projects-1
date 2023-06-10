@@ -1,6 +1,7 @@
 import { Container, Col, Row } from "react-bootstrap";
 import { BiArrowFromLeft } from "react-icons/bi";
 import book from "../../images/cover-book.png";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -15,12 +16,12 @@ function Header() {
               public books.
             </p>
 
-            <button className="secondary-btn">
+            <Link to="/explore" className="secondary-btn">
               Explore Now{" "}
               <span>
                 <BiArrowFromLeft />
               </span>
-            </button>
+            </Link>
           </Col>
           <Col md={6} className="item-2">
             <img src={book} alt="book cover" />

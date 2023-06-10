@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import store from "../store/store";
 
 function MyBooks() {
-  const API_URL = "http://localhost:5000/static";
+  const API_URL = "https://book-tracker-app.onrender.com/static";
   const dispatch = useDispatch();
   const params = useParams();
   const id: string = params.id!;
