@@ -15,6 +15,8 @@ const corsOptions = {
     optionSuccessStatus: 200,
 };
 
+connect()
+
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieparser());
@@ -29,8 +31,6 @@ app.use(express.static(frontendPath, { maxAge: '1d' }));
 app.get('*', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
 });
-
-connect()
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500
