@@ -2,10 +2,9 @@
   "name": "my-book-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js",
-    "build": "npm i"
+    "start": "node backend/server.js"
   },
   "author": "",
   "license": "ISC",
