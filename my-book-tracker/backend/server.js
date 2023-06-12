@@ -21,14 +21,6 @@ app.use(cookieparser());
 
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/book', bookRoutes)
-app.use("/static", express.static("public/images"));
-const frontendPath = path.resolve(__dirname, '../book-tracker/dist');
-
-app.use(express.static(frontendPath, { maxAge: '1d' }));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(frontendPath, 'index.html'));
-});
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500
@@ -40,11 +32,14 @@ app.use((err, req, res, next) => {
         stack: err.stack
     })
 })
-app.listen(PORT, async () => {
-    try {
-        await connect()
-        console.log(`App is running on port ${PORT}`)
-    } catch (error) {
-        console.log(error)
-    }
-})
+
+app.use("/static", express.static("public/images"));
+app.use(express.static(path.join(__dirname, '../book-tracker/dist')))
+app.get("*", (req, res) =>
+  res.sendFile(__dirname, "../", "book-tracker", "dist", "index.html")
+);
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
+  connect();
+});
