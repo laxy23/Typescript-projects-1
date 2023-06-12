@@ -46,3 +46,12 @@ connect().then(() => {
         console.log("listening for requests");
     })
 })
+
+app.listen(PORT, async () => {
+    try {
+        await connect()
+        console.log(`App is running on port ${PORT}`)
+    } catch (error) {
+        console.log(error)
+    }
+})

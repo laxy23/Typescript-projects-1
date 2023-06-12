@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 
 function BookDetail() {
   const dispatch = useDispatch();
-  const API_URL = "http://book-tracker-app.onrender.com/static";
-  const IMG_URL = "https://book-tracker-app.onrender.com/static";
+  const API_URL = "/static";
+  const IMG_URL = "/static";
   const params = useParams();
   const id: string = params.id!;
 

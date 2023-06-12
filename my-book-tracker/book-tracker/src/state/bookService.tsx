@@ -1,7 +1,7 @@
 import axios from "axios";
 import { bookData } from "../components/types/StateTypes";
 
-const API_URL = "https://book-tracker-app.onrender.com/api/v1/book";
+const API_URL = "/api/v1/book";
 
 const createBook = async (data: bookData) => {
   console.log(data);
