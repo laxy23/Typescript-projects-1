@@ -7,7 +7,7 @@ const cookieparser = require("cookie-parser");
 const { connect } = require('./utils/connect.js')
 const authRoutes = require('./routes/auth.js')
 const bookRoutes = require('./routes/book.js')
-const PORT = process.env.PORT_APP || 5000;
+const PORT = process.env.PORT_APP || "https://jade-lazy-beaver.cyclic.app";
 const app = express()
 const corsOptions = {
     origin: "https://librify.onrender.com",
