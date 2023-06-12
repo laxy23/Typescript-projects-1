@@ -39,7 +39,7 @@ app.get("*", (req, res) =>
   res.sendFile(__dirname, "../", "book-tracker", "dist", "index.html")
 );
 
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}`);
+app.listen(PORT_APP, () => {
+  console.log(`App running on port ${PORT_APP}`);
   connect();
 });
