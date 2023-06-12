@@ -40,13 +40,6 @@ app.use((err, req, res, next) => {
         stack: err.stack
     })
 })
-
-connect().then(() => {
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-    })
-})
-
 app.listen(PORT, async () => {
     try {
         await connect()
